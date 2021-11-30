@@ -4,13 +4,8 @@ database */
 
 DROP TABLE inventory;
 DROP TABLE address;
-DROP TABLE employeeJob;
-DROP TABLE employee ;
-DROP TABLE jobtype ;
-DROP TABLE coopmember ;
- 
-drop table member;
-drop table person;
+DROP TABLE member;
+DROP TABLE person;
 
 CREATE TABLE person
 (
@@ -28,7 +23,6 @@ CREATE TABLE member
 	DateAdded Date not null,
 	NewsletterOptin boolean not null
 );
-
 
 
 
