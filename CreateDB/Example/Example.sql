@@ -3,18 +3,24 @@
 -- Drop Tables
 -- We do this to re-run the Create Table Commands.  
 -- !!! Caution !!!
--- Running the DROP scripts wil drop ALL data out of the DB.
+-- Running the DROP scripts wil delete ALL data out of the DB.
 
--- NOTE: We drop tables in the opposite order of creation
+DROP TABLE AlbumInfoOld;
 
-DROP TABLE Event;
-DROP TABLE Address;
-DROP TABLE Sales;
-DROP TABLE person;
-
+-- Delay dropping 'AlbumInfo' table because 'Song' depends on it
 DROP TABLE Song;
 DROP TABLE AlbumInfo;
-DROP TABLE AlbumInfoOld;
+
+
+-- Delay dropping 'Address' table because Sales/Event depend on it
+DROP TABLE Sales;
+DROP TABLE Event;
+
+-- Drop person table after tables that depend on it
+DROP TABLE person;
+
+-- Drop Address table after tables that depend on it
+DROP TABLE Address;
 
 
 -- Definition: "Entity"
@@ -64,34 +70,35 @@ CREATE TABLE person
 	phone text
 );
 
-CREATE TABLE Sales
-{
-    SaleId integer primary key,
-    PersonId integer references(person),
-    Item text not null,
-    quantity integer,
-    BillingAddress integer references(Address) not null,
-    ShippingAddress integer references(Address),
-    date ordered,
-    date shipped
-}
 
 CREATE TABLE Address
-{
+(
     AddressId integer primary key,
     StreetAddress1 text,
     StreetAddress2 text,
     City text not null,
     State text not null,
     ZipCode integer not null
-};
+);
+
+CREATE TABLE Sales
+(
+    SaleId integer primary key,
+    PersonId integer references Person(personId) not null,
+    Item text not null,
+    quantity integer,
+    BillingAddress integer references Address(AddressId) not null,
+    ShippingAddress integer references Address(AddressId),
+    Ordered timestamp,
+    Shipped timestamp
+);
 
 CREATE TABLE Event
-{
+(
     EventID integer primary key,
     EventName text,
-    EventAddress integer references(Address),
+    EventAddress integer references Address(AddressId),
     Price decimal,
     PriceIsFree text,
     EventDate timestamp
-};
+);
