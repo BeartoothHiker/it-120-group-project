@@ -8,7 +8,9 @@ DROP TABLE employeeJob;
 DROP TABLE employee ;
 DROP TABLE jobtype ;
 DROP TABLE coopmember ;
-DROP TABLE person ;
+ 
+
+drop table person;
 
 CREATE TABLE person
 (
@@ -16,8 +18,7 @@ CREATE TABLE person
 	lastname text not null,
 	firstname text,
 	email text not null,
-	phone text,
-    dateadded timestamp default current_timestamp
+	phone text
 );
 
 CREATE TABLE member
