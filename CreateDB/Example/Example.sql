@@ -93,6 +93,25 @@ CREATE TABLE Sales
     Shipped timestamp
 );
 
+CREATE TABLE Donations 
+(
+	DonationID integer primary key,
+	PersonId integer references Person(personId) not null,
+	email text not null,
+	Amount decimal,
+	Date timestamp
+);
+
+
+
+
+
+
+
+
+
+
+
 CREATE TABLE Event
 (
     EventID integer primary key,
