@@ -103,6 +103,19 @@ CREATE TABLE Donations
 );
 
 
+CREATE TABLE SaleItem 
+(
+	SaleItemID integer primary key,
+	SaleId integer references Person(personId) not null,
+	name text not null,
+	Description text not null,
+	Contents text not null,
+	UnitPrice decimal not null,
+	Quanity decimal not null
+	
+	
+);
+
 
 
 
