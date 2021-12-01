@@ -108,3 +108,46 @@ CREATE TABLE EventComment
     EventID text,
     CommentID text,
 );
+
+CREATE TABLE Comment
+(
+    CommentID integer primary key,
+    MemberID integer references Address(MemberId) not null,
+    Date timestamp,
+    Comment text
+    
+);
+
+
+CREATE TABLE Resource
+(
+    ResourceID integer primary key,
+    MemberID integer references Address(MemberId) not null,
+    ResourceLink integer not null,
+    Title text not null,
+    Description text not null,
+    Date timestamp,
+    IsVetted text
+    
+);
+
+CREATE TABLE ResourceComment
+(
+    ResourceCommentID integer primary key,
+    ResourceID integer references Address(MemberId) not null,   <-----issue here??
+    CommentID integer references Address(MemberId) not null
+    
+);
+
+
+
+
+
+
+
+
+
+
+
+
+
