@@ -32,34 +32,6 @@ DROP TABLE Address;
 
 
 
--- Before Nomralization
-
-CREATE TABLE AlbumInfoOld
-(
-    AlbumId integer primary key,
-    SongName1 text,
-    SongName2 text,
-    SongName3 text
-);
-
--- After Normalization, seprate Album/Songs
--- Songs have a Many-to-One relationship with Albums.
-
-CREATE TABLE AlbumInfo
-(
-    AlbumId integer primary key,
-	AlbumName text
-);
-
-CREATE TABLE Song
-(
-    SongId integer primary key,
-    AlbumID integer references AlbumInfo(AlbumId),  --  Foreign Key into Album Table
-    SongName text,
-    TrackLength time
-);
-
--- Some tables we'll use with actual project.
 
 CREATE TABLE person
 (
@@ -117,30 +89,22 @@ CREATE TABLE SaleItem
 );
 
 
-
-CREATE TABLE Sale
-(
-    SaleId integer primary key,
-    PersonId integer references Person(personId) not null,
-    Item text not null,
-    quantity integer,
-    BillingAddress integer references Address(AddressId) not null,
-    ShippingAddress integer references Address(AddressId),
-    Ordered timestamp,
-    Shipped timestamp
-	
-	
-);
-
-
-
-
 CREATE TABLE Event
 (
     EventID integer primary key,
-    EventName text,
-    EventAddress integer references Address(AddressId),
-    Price decimal,
-    PriceIsFree text,
-    EventDate timestamp
+    MemberID integer references Address(MemberId) not null,
+    EventTitle text,
+    AddressID integer references Address(AddressId) not null,
+    EventDescription text,
+    EventPrice integer,
+    EventNotes text,
+    IsVetted text
+);
+
+
+CREATE TABLE EventComment
+(
+    EventCommentID integer primary key,
+    EventID text,
+    CommentID text,
 );
