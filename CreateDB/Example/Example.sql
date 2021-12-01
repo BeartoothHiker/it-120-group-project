@@ -81,7 +81,7 @@ CREATE TABLE Address
     ZipCode integer not null
 );
 
-CREATE TABLE Sales
+CREATE TABLE Sale
 (
     SaleId integer primary key,
     PersonId integer references Person(personId) not null,
@@ -93,7 +93,7 @@ CREATE TABLE Sales
     Shipped timestamp
 );
 
-CREATE TABLE Donations 
+CREATE TABLE Donation 
 (
 	DonationID integer primary key,
 	PersonId integer references Person(personId) not null,
@@ -111,16 +111,26 @@ CREATE TABLE SaleItem
 	Description text not null,
 	Contents text not null,
 	UnitPrice decimal not null,
-	Quanity decimal not null
+	Quanity integer not null
 	
 	
 );
 
 
 
-
-
-
+CREATE TABLE Sale
+(
+    SaleId integer primary key,
+    PersonId integer references Person(personId) not null,
+    Item text not null,
+    quantity integer,
+    BillingAddress integer references Address(AddressId) not null,
+    ShippingAddress integer references Address(AddressId),
+    Ordered timestamp,
+    Shipped timestamp
+	
+	
+);
 
 
 
