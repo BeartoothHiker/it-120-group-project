@@ -1,59 +1,40 @@
--- EXAMPLE scriopt
 
--- Drop Tables
--- We do this to re-run the Create Table Commands.  
--- !!! Caution !!!
--- Running the DROP scripts wil delete ALL data out of the DB.
-
-DROP TABLE AlbumInfoOld;
-
--- Delay dropping 'AlbumInfo' table because 'Song' depends on it
-DROP TABLE Song;
-DROP TABLE AlbumInfo;
-
-
--- Delay dropping 'Address' table because Sales/Event depend on it
-DROP TABLE Sales;
-DROP TABLE Event;
-
--- Drop person table after tables that depend on it
-DROP TABLE person;
-
--- Drop Address table after tables that depend on it
-DROP TABLE Address;
-
-
--- Definition: "Entity"
--- describes contents of a table (essentially column names & types)
-
--- First Normal Form:  Remove repated groups from an "Entity"
--- You do this by creating table that contains the 'type' of repeated data
--- Each entry will have a FOREIGN KEY into the orginal table.
-
-
-
+drop table member;
+drop table person cascade;
+drop table address cascade;
 
 CREATE TABLE person
 (
-	personId serial primary key,
-	firstName text not null,
+	personid integer primary key,
 	lastname text not null,
+	firstname text,
 	email text not null,
 	phone text
 );
 
 
-CREATE TABLE Address
+
+CREATE TABLE member
 (
-    AddressId integer primary key,
-    StreetAddress1 text,
-    StreetAddress2 text,
-    City text not null,
-    State text not null,
-    ZipCode integer not null
+	memberid integer primary key,
+	personid integer references person(personid),
+	DateAdded Date not null,
+	NewsletterOptin boolean not null
 );
 
-CREATE TABLE Sale
+
+CREATE TABLE address
+(
+    addressid integer primary key,
+	address1 text,
+	address2 text,
+	city text,
+	state char(2),
+	postalcode text not null
+);
+
+
+CREATE TABLE Sales
 (
     SaleId integer primary key,
     PersonId integer references Person(personId) not null,
@@ -65,7 +46,7 @@ CREATE TABLE Sale
     Shipped timestamp
 );
 
-CREATE TABLE Donation 
+CREATE TABLE Donations 
 (
 	DonationID integer primary key,
 	PersonId integer references Person(personId) not null,
@@ -73,7 +54,6 @@ CREATE TABLE Donation
 	Amount decimal,
 	Date timestamp
 );
-
 
 CREATE TABLE SaleItem 
 (
@@ -83,31 +63,31 @@ CREATE TABLE SaleItem
 	Description text not null,
 	Contents text not null,
 	UnitPrice decimal not null,
-	Quanity integer not null
-	
-	
+	Quanity decimal not null	
 );
+
 
 
 CREATE TABLE Event
 (
     EventID integer primary key,
     MemberID integer references Member(MemberId) not null,
+	AddressID integer references Address(AddressId) not null,
     EventTitle text,
-    AddressID integer references Address(AddressId) not null,
     EventDescription text,
-    EventPrice integer,
+    EventPrice decimal,
     EventNotes text,
     IsVetted text
 );
-
+--drop table eventcomment; 
 
 CREATE TABLE EventComment
 (
     EventCommentID integer primary key,
-    EventID text,
-    CommentID text,
+    EventID integer references Event(EventId) not null,
+    CommentID integer references Comment(CommentId) not null
 );
+
 
 CREATE TABLE Comment
 (
@@ -119,7 +99,14 @@ CREATE TABLE Comment
 );
 
 
-CREATE TABLE Resource
+CREATE TABLE EventComment
+(
+    EventCommentID integer primary key,
+    EventID integer references Event(EventId) not null,
+    CommentID integer references Comment(CommentId) not null
+);
+
+CREATE TABLE Resource  
 (
     ResourceID integer primary key,
     MemberID integer references Member(MemberId) not null,
@@ -131,21 +118,18 @@ CREATE TABLE Resource
     
 );
 
+
 CREATE TABLE ResourceComment
 (
     ResourceCommentID integer primary key,
-    ResourceID integer references Resource(ResourceId) not null,   <-----issue here??
-    CommentID integer references Comment(CommentId) not null
+    ResourceID integer references Resource(ResourceID) not null,
+    CommentID integer references Comment(CommentID) not null
     
 );
 
 
-
-
-
-
-
-
+	
+	
 
 
 
