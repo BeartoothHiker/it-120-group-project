@@ -78,7 +78,7 @@ CREATE TABLE Donation
 CREATE TABLE SaleItem 
 (
 	SaleItemID integer primary key,
-	SaleId integer references Person(personId) not null,
+	SaleId integer references Sale(SaleId) not null,
 	name text not null,
 	Description text not null,
 	Contents text not null,
@@ -92,7 +92,7 @@ CREATE TABLE SaleItem
 CREATE TABLE Event
 (
     EventID integer primary key,
-    MemberID integer references Address(MemberId) not null,
+    MemberID integer references Member(MemberId) not null,
     EventTitle text,
     AddressID integer references Address(AddressId) not null,
     EventDescription text,
@@ -108,3 +108,46 @@ CREATE TABLE EventComment
     EventID text,
     CommentID text,
 );
+
+CREATE TABLE Comment
+(
+    CommentID integer primary key,
+    MemberID integer references Member(MemberId) not null,
+    Date timestamp,
+    Comment text
+    
+);
+
+
+CREATE TABLE Resource
+(
+    ResourceID integer primary key,
+    MemberID integer references Member(MemberId) not null,
+    ResourceLink integer not null,
+    Title text not null,
+    Description text not null,
+    Date timestamp,
+    IsVetted text
+    
+);
+
+CREATE TABLE ResourceComment
+(
+    ResourceCommentID integer primary key,
+    ResourceID integer references Resource(ResourceId) not null,   <-----issue here??
+    CommentID integer references Comment(CommentId) not null
+    
+);
+
+
+
+
+
+
+
+
+
+
+
+
+
