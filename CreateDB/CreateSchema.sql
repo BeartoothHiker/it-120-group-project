@@ -1,4 +1,3 @@
-
 /*
 -- Run this portion of the script to drop tables
 -- if we make a change to the schema.
@@ -36,7 +35,7 @@ CREATE TABLE member
 	memberid integer primary key,
 	personid integer references person(personid),
 	DateAdded Date not null,
-	NewsletterOptin boolean not null
+	NewsletterOptin boolean default false
 );
 
 
@@ -85,12 +84,13 @@ CREATE TABLE SaleItem
 CREATE TABLE Event
 (
     EventID integer primary key,
-    MemberID integer references Member(MemberId) not null,
-	AddressID integer references Address(AddressId) not null,
+    MemberID integer references Member(MemberId),
+	AddressID integer references Address(AddressId),
     EventTitle text not null,
     EventDescription text,
     EventPrice decimal,
     EventNotes text,
+    EventDate timestamp,
     IsVetted boolean default false
 );
 
@@ -112,7 +112,7 @@ CREATE TABLE EventComment
 CREATE TABLE Resource  
 (
     ResourceID integer primary key,
-    MemberID integer references Member(MemberId) not null,
+    MemberID integer references Member(MemberId),
     ResourceLink integer not null,
     Title text not null,
     Description text,
