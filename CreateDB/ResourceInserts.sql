@@ -46,14 +46,6 @@ VALUES (
  false
 );
 
-
-CREATE TABLE ResourceComment
-(
-    ResourceCommentID integer primary key,
-    ResourceID integer references Resource(ResourceID) not null,
-    CommentID integer references Comment(CommentID) not null
-);
-
 INSERT INTO ResourceComment
     (ResourceCommentID, ResourceID, CommentID)
 VALUES(1001, 103, 1);
