@@ -49,19 +49,3 @@ VALUES (
 INSERT INTO ResourceComment
     (ResourceCommentID, ResourceID, CommentID)
 VALUES(1001, 103, 1);
-
-
-	
-
-
-
-
-
- 
-
-
-
- 
-
-
-
