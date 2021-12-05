@@ -1,11 +1,15 @@
+/*
+DELETE FROM Resource;
+*/
+
 INSERT INTO Resource
    (ResourceID, MemberID, ResourceLink, Title, Description, Date, IsVetted)
 VALUES (
  100, 
  1, 
- "https://www.pepnw.org/about-us/",
- "Partnership for Energy progress",
- "The Partnership for Energy Progress is a collaboration of utilities, farmers, workers, small and large businesses, and community advocates across the Northwest. Our goal is to communicate the work we do to provide reliable, affordable energy to homes and businesses, and highlight the progress we’re making to address climate change.", 
+ 'https://www.pepnw.org/about-us/',
+ 'Partnership for Energy progress',
+ 'The Partnership for Energy Progress is a collaboration of utilities, farmers, workers, small and large businesses, and community advocates across the Northwest. Our goal is to communicate the work we do to provide reliable, affordable energy to homes and businesses, and highlight the progress we’re making to address climate change.', 
  '09/12/2020 12:00 PM',
  false
 );
