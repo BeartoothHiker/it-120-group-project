@@ -1,15 +1,3 @@
-CREATE TABLE Resource  
-(
-    ResourceID integer primary key,
-    MemberID integer references Member(MemberId),
-    ResourceLink integer not null,
-    Title text not null,
-    Description text,
-    Date timestamp,
-    IsVetted boolean default false
-);
-
-
 INSERT INTO Resource
    (ResourceID, MemberID, ResourceLink, Title, Description, Date, IsVetted)
 VALUES (
