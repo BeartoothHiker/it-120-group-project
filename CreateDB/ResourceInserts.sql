@@ -56,7 +56,7 @@ CREATE TABLE ResourceComment
 
 INSERT INTO ResourceComment
     (ResourceCommentID, ResourceID, CommentID)
-VALUES(1001, 101, 1);
+VALUES(1001, 103, 1);
 
 
 	
