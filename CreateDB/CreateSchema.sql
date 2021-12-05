@@ -127,3 +127,8 @@ CREATE TABLE ResourceComment
     CommentID integer references Comment(CommentID) not null
 );
 
+-- Fix any issues with the tables here.  You can use these commands without 
+-- needing to drop the entire table (and lose data).  Feel free to add upates here.
+
+ALTER TABLE Resource
+ALTER COLUMN ResourceLink TYPE Text;
