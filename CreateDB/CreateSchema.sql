@@ -132,3 +132,6 @@ CREATE TABLE ResourceComment
 
 ALTER TABLE Resource
 ALTER COLUMN ResourceLink TYPE Text;
+
+ALTER TABLE Sale
+DROP COLUMN Item;
