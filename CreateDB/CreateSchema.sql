@@ -135,3 +135,10 @@ ALTER COLUMN ResourceLink TYPE Text;
 
 ALTER TABLE Sale
 DROP COLUMN Item;
+
+-- Fix Foreign Key references between Sale/SaleItem
+ALTER TABLE SaleItem
+DROP COLUMN SaleID;
+
+ALTER TABLE Sale
+ADD COLUMN SaleItemID integer references SaleItem(SaleItemID);
