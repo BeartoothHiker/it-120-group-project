@@ -1,11 +1,8 @@
-/*
-DELETE FROM Resource;
-*/
 
 INSERT INTO Resource
    (ResourceID, MemberID, ResourceLink, Title, Description, Date, IsVetted)
 VALUES (
- 100, 
+ 1, 
  1, 
  'https://www.pepnw.org/about-us/',
  'Partnership for Energy progress',
@@ -17,7 +14,7 @@ VALUES (
 INSERT INTO Resource
    (ResourceID, MemberID, ResourceLink, Title, Description, Date, IsVetted)
 VALUES (
- 101, 
+ 2, 
  1, 
  'https://new.siemens.com/us/en/company/sustainability/environmental-action.html',
  'Siemens Company',
@@ -29,8 +26,8 @@ VALUES (
 INSERT INTO Resource
    (ResourceID, MemberID, ResourceLink, Title, Description, Date, IsVetted)
 VALUES (
- 102, 
- 1, 
+ 3, 
+ 5, 
  'https://www.unep-wcmc.org/',
  'UN Environment Program',
  'UN Environment Programme World Conservation Monitoring Centre is a world leader in biodiversity knowledge. It works with scientists and policy makers worldwide to place biodiversity at the heart of environment and development decision-making to enable enlightened choices for people and the planet.', 
@@ -41,8 +38,8 @@ VALUES (
 INSERT INTO Resource
    (ResourceID, MemberID, ResourceLink, Title, Description, Date, IsVetted)
 VALUES (
- 103, 
- 1, 
+ 4, 
+ 6, 
  'https://climate.nasa.gov/ ',
  'Nasa on Climate Change',
  'Explore a real-time data visualization of NASA’s Earth-orbiting satellites and the data they collect about climate change.',
@@ -52,4 +49,5 @@ VALUES (
 
 INSERT INTO ResourceComment
     (ResourceCommentID, ResourceID, CommentID)
-VALUES(1001, 103, 1);
+VALUES(1, 4, 1);
+
