@@ -140,5 +140,8 @@ DROP COLUMN Item;
 ALTER TABLE SaleItem
 DROP COLUMN SaleID;
 
+ALTER TABLE SaleItem
+RENAME COLUMN Quanity TO Quantity;
+
 ALTER TABLE Sale
 ADD COLUMN SaleItemID integer references SaleItem(SaleItemID);

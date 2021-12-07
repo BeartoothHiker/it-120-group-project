@@ -53,8 +53,10 @@ LEFT OUTER JOIN Member ON (Person.PersonId = Member.PersonId);
 -- 2. Add Sale/SaleItem data
 /* 
 
--- Issue with table... Item should not be in Sale
+-- Issue with table: Item should not be in Sale
 -- Removed the "Item" column, and "Item" values from the 3 rows
+
+-- Issue with table: Sale Should have FK reference into SaleItem (Inventory)
 
 -- Issue with DATA below.  It should be referenceing data form SaleItem (inventory) table
 
@@ -199,4 +201,5 @@ JOIN Member on (Member.MemberID = Comment.MemberID)
 JOIN Person on (Person.PersonID = Member.PersonID)
 WHERE (ResourceComment.ResourceID = 4); 
 
+-- 5. Insert Donations at this point 
 
