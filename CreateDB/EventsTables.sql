@@ -29,9 +29,3 @@ INSERT INTO Member
 VALUES
     (1, 1, '5/1/2020')
 ;
-
-INSERT INTO Comment
-    (CommentID, MemberID, Date, Comment)
-VALUES
-    (1, 1, '10/22/2020 1:00 PM', 'I attended the Convention on Climate policy last year and it was quite enlightening. They had discussions from several high ranking scientists and politicians. Worth the price.')
-;
