@@ -5,8 +5,8 @@
 -- Warning Drop tables will delete table & all data.
 
 drop table Donation;
-drop table SaleItem;
-drop table Sale;
+drop table Sale cascade;
+drop table SaleItem cascade;
 
 drop table EventComment;
 drop table ResourceComment;
@@ -145,3 +145,7 @@ RENAME COLUMN Quanity TO Quantity;
 
 ALTER TABLE Sale
 ADD COLUMN SaleItemID integer references SaleItem(SaleItemID);
+
+-- More Sale/SaleItem fixes
+ALTER TABLE SaleItem
+ADD Column EnteredDate timestamp;
